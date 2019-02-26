@@ -17,10 +17,12 @@ Route::get('/', function () {
 
 Route::get('/books', 'BookController@index');
 
+Route::get('/books/create', 'BookController@create');
+Route::post('/books', 'BookController@store');
+
+
 
 Auth::routes();
-
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -28,7 +30,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/profile', function(){
 //   return '<h1>Profile</h1>';
 //})->middleware('auth');
-
 
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile-show', 'ProfileController@show');

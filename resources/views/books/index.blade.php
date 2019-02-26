@@ -4,8 +4,9 @@
 </head>
 <body>
 <h1>Books</h1>
-
+<a href="{{ action('BookController@create') }}">Create</a>
 <div id="books">
+
     @foreach($books as $book)
         <div class="book">
             <img src="{{ $book->image }}" alt="title"/>
