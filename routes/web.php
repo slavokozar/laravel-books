@@ -21,6 +21,15 @@ Route::get('/books/create', 'BookController@create');
 Route::post('/books', 'BookController@store');
 
 
+Route::get('/books/{id}/edit', 'BookController@edit');
+Route::put('/books/{id}/edit', 'BookController@update');
+
+
+
+
+
+
+
 
 Auth::routes();
 

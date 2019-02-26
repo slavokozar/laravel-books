@@ -9,7 +9,8 @@
 
     @foreach($books as $book)
         <div class="book">
-            <img src="{{ $book->image }}" alt="title"/>
+            <img style="height:100px;" src="{{ $book->image }}" alt="title"/>
+            <a href="{{ action('BookController@edit', $book->id) }}">Edit</a>
             <h2>{{ $book->title }}</h2>
             <h3>{{ $book->authors }}</h3>
         </div>
