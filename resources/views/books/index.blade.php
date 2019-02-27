@@ -13,7 +13,28 @@
             <a href="{{ action('BookController@edit', $book->id) }}">Edit</a>
             <h2>{{ $book->title }}</h2>
             <h3>{{ $book->authors }}</h3>
+
+            @if($book->publisher)
+                <p>Publisher: {{ $book->publisher->name }}</p>
+            @endif
+
+
+            @if($book->bookshops->count() > 0)
+                <p>
+                    Book is available at these shops:
+                    <ul>
+                        @foreach($book->bookshops as $shop)
+                            <li>{{ $shop->name }}</li>
+                        @endforeach
+                    </ul>
+                </p>
+            @else
+                <p>This book is not available :(</p>
+            @endif
+
+
         </div>
+        <hr>
     @endforeach
 </div>
 </body>

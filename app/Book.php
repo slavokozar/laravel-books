@@ -10,8 +10,18 @@ class Book extends Model
     protected $fillable = [
         'title',
         'authors',
-        'image'
+        'image',
+        'publisher_id'
     ];
 
-//    protected $guarded = [];
+
+    public function publisher()
+    {
+        return $this->belongsTo('App\Publisher', 'publisher_id');
+    }
+
+    public function bookshops()
+    {
+        return $this->belongsToMany('App\Bookshop');
+    }
 }

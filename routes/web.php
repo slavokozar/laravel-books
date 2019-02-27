@@ -42,3 +42,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index');
 Route::get('/profile-show', 'ProfileController@show');
+
+
+Route::get('/pub/{id}', 'PublisherController@show');

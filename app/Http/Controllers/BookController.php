@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 
 use App\Book;
+use App\Bookshop;
+use App\Publisher;
 
 class BookController extends Controller
 {
@@ -26,7 +30,10 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('books.create');
+        $publishers = Publisher::all();
+        $bookshops = Bookshop::all();
+
+        return view('books.create', compact(['publishers', 'bookshops']));
     }
 
 
@@ -34,15 +41,19 @@ class BookController extends Controller
     {
 //        $book = new Book;
 //
-//        $book->title = $request->title;
-//        $book->authors = $request->authors;
-//        $book->image = $request->image;
+//        $book->title        = $request->title;
+//        $book->authors      = $request->authors;
+//        $book->image        = $request->image;
+//        $book->publisher_id = $request->publisher_id;
 //
 //        $book->save();
 
         $data = $request->all();
 
         $book = Book::create($data);
+
+        $book->bookshops()->attach($request->bookshops_id);
+
 
         return redirect(action('BookController@index'));
     }
@@ -58,7 +69,6 @@ class BookController extends Controller
 
     public function update($id, Request $request)
     {
-
 
 
         $book = Book::findOrFail($id);
